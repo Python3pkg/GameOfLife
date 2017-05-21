@@ -138,7 +138,7 @@ class World(object):
 
         Implements wrapping of x,y coordinates to form an wrapping grid.
         '''
-        x, y = map(int, key)
+        x, y = list(map(int, key))
         x %= self.width
         y %= self.height
         return x, y
@@ -430,16 +430,16 @@ class NumpyWorld(World):
         self._y = 0
         return self
 
-    def next(self):
+    def __next__(self):
         '''
         '''
         v = self[self._x, self._y]
         x, y = self._x, self._y
         self._x += 1
-        if self._x not in range(self.width):
+        if self._x not in list(range(self.width)):
             self._x = 0
             self._y += 1
-        if self._y not in range(self.height):
+        if self._y not in list(range(self.height)):
             raise StopIteration()
 
         return x, y, v

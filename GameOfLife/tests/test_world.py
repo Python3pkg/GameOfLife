@@ -142,7 +142,7 @@ class WorldTestCase(unittest.TestCase):
 
         # needs world bounds checking for world smaller than pattern
 
-        for pattern in Patterns.values():
+        for pattern in list(Patterns.values()):
 
             world = World(width=40, height=40)
 
@@ -154,7 +154,7 @@ class WorldTestCase(unittest.TestCase):
                              nAlivePatternCells,
                              'pattern {pattern}'.format(pattern=pattern))
 
-        for name, pattern in Patterns.items():
+        for name, pattern in list(Patterns.items()):
 
             world = World(width=40, height=40)
 
